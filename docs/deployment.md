@@ -18,13 +18,16 @@ The reusable values are in [`../infra/deployment.config.json`](../infra/deployme
 
 ```json
 {
-  "location": "westeurope",
+  "location": "eastus2",
+  "bootstrapLocation": "westeurope",
   "namePrefix": "profile-counter",
   "counterIds": ["default"]
 }
 ```
 
-Choose the location before the first deployment. See [Configuration](configuration.md)
+Choose the application location before the first deployment. Keep
+`bootstrapLocation` unchanged after bootstrap because it records the location of
+the resource groups and deployment identity. See [Configuration](configuration.md)
 for the meaning of each value.
 
 ## 2. Check the repository locally

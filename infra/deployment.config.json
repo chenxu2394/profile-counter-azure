@@ -1,5 +1,6 @@
 {
-  "location": "westeurope",
+  "location": "eastus2",
+  "bootstrapLocation": "westeurope",
   "namePrefix": "profile-counter",
   "counterIds": [
     "default"

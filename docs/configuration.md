@@ -7,7 +7,8 @@ deployment:
 
 | Value | Default | Purpose |
 | --- | --- | --- |
-| `location` | `westeurope` | Azure region for Cosmos DB and Static Web Apps |
+| `location` | `eastus2` | Azure region for Cosmos DB and Static Web Apps |
+| `bootstrapLocation` | `westeurope` | Stable location for resource groups and the GitHub deployment identity |
 | `namePrefix` | `profile-counter` | Prefix for resource groups, the identity, and the Static Web App |
 | `counterIds` | `["default"]` | Publicly accepted counter IDs |
 

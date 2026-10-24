@@ -64,7 +64,7 @@ else
   DEPLOYMENT_BRANCH="$(gh repo view "${REPOSITORY}" --json defaultBranchRef --jq '.defaultBranchRef.name')"
 fi
 
-AZURE_LOCATION="${AZURE_LOCATION:-$(read_config_string location)}"
+AZURE_LOCATION="${AZURE_LOCATION:-$(read_config_string bootstrapLocation)}"
 AZURE_NAME_PREFIX="${AZURE_NAME_PREFIX:-$(read_config_string namePrefix)}"
 BOOTSTRAP_RESOURCE_GROUP="${BOOTSTRAP_RESOURCE_GROUP:-${AZURE_NAME_PREFIX}-bootstrap-rg}"
 APPLICATION_RESOURCE_GROUP="${APPLICATION_RESOURCE_GROUP:-${AZURE_NAME_PREFIX}-rg}"
