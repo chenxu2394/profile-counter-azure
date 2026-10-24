@@ -1,0 +1,38 @@
+{
+  "routes": [
+    {
+      "route": "/views",
+      "rewrite": "/api/views"
+    },
+    {
+      "route": "/views.svg",
+      "rewrite": "/api/views"
+    },
+    {
+      "route": "/api/views",
+      "methods": ["GET"],
+      "allowedRoles": ["anonymous"],
+      "headers": {
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+        "Access-Control-Allow-Origin": "*",
+        "X-Content-Type-Options": "nosniff"
+      }
+    },
+    {
+      "route": "/api/health",
+      "methods": ["GET"],
+      "allowedRoles": ["anonymous"],
+      "headers": {
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+        "X-Content-Type-Options": "nosniff"
+      }
+    }
+  ],
+  "globalHeaders": {
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "X-Frame-Options": "DENY"
+  },
+  "platform": {
+    "apiRuntime": "node:22"
+  }
+}

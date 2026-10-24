@@ -1,0 +1,7 @@
+{
+  "location": "westeurope",
+  "namePrefix": "profile-counter",
+  "counterIds": [
+    "default"
+  ]
+}

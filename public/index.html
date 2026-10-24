@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>profile-counter</title>
+  <meta name="description" content="A self-hosted GitHub profile counter on Azure." />
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+    }
+    body {
+      display: grid;
+      min-height: 100vh;
+      margin: 0;
+      place-items: center;
+      background: Canvas;
+      color: CanvasText;
+    }
+    main {
+      width: min(34rem, calc(100% - 3rem));
+    }
+    h1 { margin-bottom: 0.5rem; }
+    p { color: GrayText; }
+    dl {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.5rem 1rem;
+      margin-top: 2rem;
+    }
+    dt { font-weight: 600; }
+    dd { margin: 0; }
+    code {
+      padding: 0.15rem 0.35rem;
+      border: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+      border-radius: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>profile-counter</h1>
+    <p>A self-hosted SVG badge backed by an Azure Function and Cosmos DB.</p>
+    <dl>
+      <dt>Badge</dt>
+      <dd><code>/api/views</code> increments the configured counter.</dd>
+      <dt>Health</dt>
+      <dd><code>/api/health</code> checks the API and database without incrementing.</dd>
+    </dl>
+  </main>
+</body>
+</html>

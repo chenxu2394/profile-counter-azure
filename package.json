@@ -1,0 +1,36 @@
+{
+  "name": "profile-counter",
+  "version": "2.0.0",
+  "description": "Self-hosted GitHub profile views badge on Azure Static Web Apps and Cosmos DB.",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "dev:api": "npm start --prefix api",
+    "seed": "node scripts/seed.js",
+    "test": "node --test",
+    "test:render": "node scripts/render-preview.js",
+    "validate:bicep": "az bicep build --file infra/main.bicep --stdout"
+  },
+  "keywords": [
+    "github",
+    "profile",
+    "counter",
+    "views",
+    "visitor",
+    "badge",
+    "shields",
+    "komarev",
+    "alternative",
+    "self-hosted",
+    "azure",
+    "cosmos-db",
+    "static-web-apps",
+    "bicep",
+    "serverless"
+  ],
+  "author": "Chen Xu",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "COSMOS_ENDPOINT": "https://your-account.documents.azure.com:443/",
+    "COSMOS_KEY": "your-cosmos-primary-key",
+    "COSMOS_DATABASE_ID": "profile-counter",
+    "COSMOS_CONTAINER_ID": "counters",
+    "COUNTER_IDS": "default"
+  }
+}
