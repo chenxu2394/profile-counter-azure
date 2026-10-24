@@ -80,6 +80,64 @@ Azure request. The badge therefore counts origin requests, not exact human visit
 The bootstrap discovers the GitHub owner, repository, and default branch from the
 current remote. No personal GitHub username is stored in the source.
 
+## Retrieve deployment values
+
+After the first successful deployment, list the Static Web App name and hostname:
+
+```bash
+az staticwebapp list \
+  --resource-group profile-counter-rg \
+  --query "[].{Name:name,Hostname:defaultHostname}" \
+  --output table
+```
+
+Use the hostname to check the managed Function and Cosmos DB without changing the
+counter:
+
+```bash
+curl -i "https://YOUR_STATIC_WEB_APP.azurestaticapps.net/api/health"
+```
+
+A healthy response is `204 No Content` with `X-Health-Status: ok`. An always-on
+device or monitoring service can request this endpoint every 10–15 minutes as a
+best-effort warm-up probe:
+
+```bash
+curl --fail --silent --show-error --output /dev/null \
+  "https://YOUR_STATIC_WEB_APP.azurestaticapps.net/api/health"
+```
+
+The health endpoint performs a read-only point lookup and never increments the
+counter. Do not use `/api/views` as a warm-up probe because it increments the count.
+Azure may still recycle the Consumption-style managed Function between requests.
+
+To find the Cosmos DB account name and endpoint:
+
+```bash
+az cosmosdb list \
+  --resource-group profile-counter-rg \
+  --query "[].{Name:name,Endpoint:documentEndpoint}" \
+  --output table
+```
+
+Retrieve its primary key only when a local `.env` file is needed for counter
+administration:
+
+```bash
+az cosmosdb keys list \
+  --resource-group profile-counter-rg \
+  --name "YOUR_COSMOS_ACCOUNT_NAME" \
+  --type keys \
+  --query primaryMasterKey \
+  --output tsv
+```
+
+Copy `.env.example` to `.env`, then put the returned endpoint and key in
+`COSMOS_ENDPOINT` and `COSMOS_KEY`. Treat the key like a password and never commit
+the `.env` file. It is not required for bootstrap, GitHub Actions deployment, or the
+hosted badge; it is used by commands such as `npm run seed -- --get` and
+`npm run seed -- 100`.
+
 ## Documentation
 
 | Guide                                  | Contents                                                                        |
